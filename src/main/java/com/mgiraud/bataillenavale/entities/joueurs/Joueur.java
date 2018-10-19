@@ -16,6 +16,6 @@ public class Joueur {
 	}
 	
 	public void AjoutBateau (Default_bateau newBateau) {
-		newBateau.
+		bateaux = newBateau.placerBateau(bateaux);
 	}
 }

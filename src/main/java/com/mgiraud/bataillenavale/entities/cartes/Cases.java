@@ -11,7 +11,7 @@ public class Cases {
 	private int posX;
 	private int posY;
 	
-	public Cases(int positionX, int positionY/*, int type*/) {
+	public Cases(int positionX, int positionY) {
 		// TODO Auto-generated constructor stub
 		this.posX = positionX;
 		this.posY = positionY;
@@ -27,6 +27,10 @@ public class Cases {
 	
 	public void setEau() {
 		this.type = "{ }";
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	public String getType() {
