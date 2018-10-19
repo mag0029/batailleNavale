@@ -16,7 +16,7 @@ public class Carte {
 		
 	}
 	
-	public void AfficheCarte(CasesArrayList attaques) {
+	public void AfficheCartePartie(CasesArrayList attaques) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < tailleY; i++) {
 			for (int j = 0; j < tailleX; j++) {

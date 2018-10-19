@@ -11,22 +11,10 @@ public class Cases {
 	private int posX;
 	private int posY;
 	
-	public Cases(int positionX, int positionY, int type) {
+	public Cases(int positionX, int positionY/*, int type*/) {
 		// TODO Auto-generated constructor stub
 		this.posX = positionX;
 		this.posY = positionY;
-		this.idType = type;
-		switch (idType) {
-		case 0 :
-			this.setEau();
-			break;
-		case 1 :
-			this.setCoule();
-			break;
-		case 2 : 
-			this.setTouche();
-			break;
-		}
 	}
 	
 	public void setTouche() {
