@@ -1,6 +1,7 @@
 package com.mgiraud.bataillenavale.entities.bateaux;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.mgiraud.bataillenavale.entities.cartes.*;
 import com.mgiraud.bataillenavale.entities.joueurs.CasesArrayList;
@@ -11,7 +12,7 @@ public abstract class Default_bateau {
 	private int posY;
 	private int taille;
 	private String id;
-	public CasesArrayList placement;
+	public CasesArrayList placement = new CasesArrayList();
 	
 	public Default_bateau(int taille,String id) {
 		// TODO Auto-generated constructor stub
@@ -36,10 +37,13 @@ public abstract class Default_bateau {
 	public int getTaille() {
 		return taille;
 	}
+	
+	
 
-	/*public void setTaille(int taille) {
-		this.taille = taille;
-	}*/
+
+	public CasesArrayList getPlacement() {
+		return placement;
+	}
 
 	private void setCasePlacement(int pX, int pY) {
 		Cases caseX = new Cases(pX,pY);
@@ -50,10 +54,10 @@ public abstract class Default_bateau {
 	private void setPlacement(int originX, int originY, int sens) {
 		for (int i = 0; i <this.taille; i++) {
 			if (sens == 0) {
-				originX = originX + i;
+				originX++;
 				setCasePlacement(originX, originY);
 			}else {
-				originY = originY + i;
+				originY++;
 				setCasePlacement(originX, originY);
 			}
 		}
@@ -65,11 +69,15 @@ public abstract class Default_bateau {
 		for (int i = 0; i<listeBateaux.size();i++) {
 			if (sens==0) {
 				for(int j = x; j < x+this.taille; j++) {
-					listeBateaux.get(i).placement.CaseExiste(j,y);
+					if(listeBateaux.get(i).placement.CaseExiste(j,y)) {
+						result = false;
+					}
 				}
 			}else {
 				for(int j = y; j < y+this.taille; j++) {
-					listeBateaux.get(i).placement.CaseExiste(x,j);
+					if(listeBateaux.get(i).placement.CaseExiste(x,j)) {
+						result = false;
+					}
 				}
 			}
 	
@@ -79,15 +87,20 @@ public abstract class Default_bateau {
 	}
 	
 	
-	public ArrayList<Default_bateau> placerBateau(ArrayList<Default_bateau> listeBateaux) {
+	public ArrayList<Default_bateau> placerBateau(ArrayList<Default_bateau> listeBateaux, Carte map) {
 		int origineX;
 		int origineY;
 		int sens;
 		do {
-			origineX = ;
-			origineY = ;
-			sens = ;
-			
+			Random rand = new Random();
+			sens = rand.nextInt(2);
+			if (sens == 0) {
+				origineX = rand.nextInt(map.getTailleX()-this.taille);
+				origineY = rand.nextInt(map.getTailleY());
+			}else {
+				origineX = rand.nextInt(map.getTailleX());
+				origineY = rand.nextInt(map.getTailleY()-this.taille);
+			}
 		}while (!emplacementCorrect(origineX,origineY,sens,listeBateaux));
 		
 		setPlacement(origineX, origineY, sens);

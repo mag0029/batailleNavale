@@ -3,6 +3,7 @@ package com.mgiraud.bataillenavale.entities.joueurs;
 import java.util.ArrayList;
 
 import com.mgiraud.bataillenavale.entities.bateaux.*;
+import com.mgiraud.bataillenavale.entities.cartes.Carte;
 
 public class Joueur {
 	
@@ -15,7 +16,11 @@ public class Joueur {
 		bateaux = new ArrayList<Default_bateau>();
 	}
 	
-	public void AjoutBateau (Default_bateau newBateau) {
-		bateaux = newBateau.placerBateau(bateaux);
+	public void ajoutBateau (Default_bateau newBateau,Carte map) {
+		bateaux = newBateau.placerBateau(bateaux, map);
+	}
+	
+	public ArrayList<Default_bateau> getBateaux(){
+		return this.bateaux;
 	}
 }

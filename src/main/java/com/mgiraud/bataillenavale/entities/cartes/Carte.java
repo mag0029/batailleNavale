@@ -24,7 +24,7 @@ public class Carte {
 				if (attaques.CaseExiste(j,i)) {
 					builder.append(attaques.get(attaques.CaseIndex(j,i)).getType());
 				}else {
-					builder.append("{ }");
+					builder.append(" . ");
 				}
 			}
 			builder.append("\n");
@@ -34,19 +34,33 @@ public class Carte {
 	
 	public void AfficheCarteBateaux(ArrayList<Default_bateau> bateaux) {
 		StringBuilder builder = new StringBuilder();
+		boolean rempli = false;
 		for (int i = 0; i < tailleY; i++) {
 			for (int j = 0; j < tailleX; j++) {
 				for (int k=0; k<bateaux.size();k++) {
 					if (bateaux.get(k).placement.CaseExiste(j,i)) {
 						int index = bateaux.get(k).placement.CaseIndex(j,i);
 						builder.append(bateaux.get(k).placement.get(index).getType());
-					}else {
-						builder.append("{ }");
+						rempli = true;
 					}
 				}
+				if (!rempli) {
+					builder.append(" . ");
+				}
+				rempli = false;
 			}
 			builder.append("\n");
 		}
 		System.out.println(builder.toString());		
 	}
+
+	public int getTailleX() {
+		return tailleX;
+	}
+
+	public int getTailleY() {
+		return tailleY;
+	}
+	
+	
 }
