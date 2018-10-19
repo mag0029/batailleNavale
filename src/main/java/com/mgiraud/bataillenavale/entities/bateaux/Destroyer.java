@@ -4,6 +4,7 @@ public class Destroyer extends Default_bateau {
 
 	public Destroyer() {
 		// TODO Auto-generated constructor stub
+		super(1);
 	}
 
 }

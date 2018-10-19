@@ -7,14 +7,26 @@ package com.mgiraud.bataillenavale.entities.cartes;
 public class Cases {
 	
 	private String type;
+	private int idType;
 	private int posX;
 	private int posY;
 	
-	public Cases(int positionX, int positionY) {
+	public Cases(int positionX, int positionY, int type) {
 		// TODO Auto-generated constructor stub
 		this.posX = positionX;
 		this.posY = positionY;
-		this.setEau();
+		this.idType = type;
+		switch (idType) {
+		case 0 :
+			this.setEau();
+			break;
+		case 1 :
+			this.setCoule();
+			break;
+		case 2 : 
+			this.setTouche();
+			break;
+		}
 	}
 	
 	public void setTouche() {
@@ -31,6 +43,18 @@ public class Cases {
 	
 	public String getType() {
 		return this.type;
+	}
+	
+	public int getIdType() {
+		return this.idType;
+	}
+	
+	public int getPosX() {
+		return this.posX;
+	}
+	
+	public int getPosY() {
+		return this.posY;
 	}
 	
 	
